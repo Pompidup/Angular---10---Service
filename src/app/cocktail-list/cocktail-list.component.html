@@ -1,0 +1,31 @@
+<h1>{{title}}</h1>
+
+<table class="table container">
+
+
+  <thead class="row">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Picture</th>
+    </tr>
+  </thead>
+
+
+  <tbody class="row">
+    <ng-container *ngFor="let cocktail of cocktails;">
+      <tr *ngIf="cocktail.name">
+        <td>
+          {{cocktail.name}}
+        </td>
+        <td>
+          {{cocktail.price}} $
+        </td>
+        <td>
+          <img alt="picture" src={{cocktail.img}}>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+
+</table>
