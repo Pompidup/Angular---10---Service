@@ -1,31 +1,26 @@
-<h1>{{title}}</h1>
-
-<table class="table container">
-
-
-  <thead class="row">
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Picture</th>
-    </tr>
+<table class="table">
+  <thead>
+  <tr>
+      <th scope="col">name</th>
+      <th scope="col">price</th>
+      <th scope="col">image</th>
+  </tr>
   </thead>
+  <tbody>
 
-
-  <tbody class="row">
-    <ng-container *ngFor="let cocktail of cocktails;">
+  <ng-container *ngFor="let cocktail of cocktails ">
       <tr *ngIf="cocktail.name">
-        <td>
-          {{cocktail.name}}
-        </td>
-        <td>
-          {{cocktail.price}} $
-        </td>
-        <td>
-          <img alt="picture" src={{cocktail.img}}>
-        </td>
+          <td>
+              {{cocktail.name}}
+          </td>
+          <td>
+              {{cocktail.price}}
+          </td>
+          <td>
+              <img src={{cocktail.img}}>
+          </td>
       </tr>
-    </ng-container>
-  </tbody>
+  </ng-container>
 
+  </tbody>
 </table>

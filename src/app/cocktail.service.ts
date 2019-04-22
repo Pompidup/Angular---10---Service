@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import { Observable} from 'rxjs';
+import { Cocktail } from './coktail';
+import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CocktailService {
-  Cocktail = [
-    { name: 'Blue Hawaii', price: 10, img: "https://cdn.pixabay.com/photo/2015/07/04/22/03/blue-hawaii-831783__340.jpg" },
-    { name: 'Pina Colada', price: 15, img: "https://cdn.pixabay.com/photo/2016/02/09/16/10/cocktail-1189891__340.jpg" },
-    { name: 'Strawberry Mojito', price: 18, img: "https://cdn.pixabay.com/photo/2015/07/16/06/51/strawberry-mojito-847240__340.jpg" },
-    { name: 'Screw Driver', price: 12, img: "https://cdn.pixabay.com/photo/2015/07/04/21/59/screwdriver-831767__340.jpg" },
-    { name: 'Blue Lagoon', price: 16, img: "https://cdn.pixabay.com/photo/2015/07/16/06/50/blue-lagoon-847238__340.jpg" }
-  ];
-  constructor() { }
+    url = 'assets/cocktail.json';
+    constructor(private http: HttpClient) {}
 
-  public getCocktails() {
-    return this.Cocktail;
-  }
+    public getCocktails(): Observable<Cocktail[]> {
+        const obs1: Observable<any> = this.http.get(this.url);
+        const treatment = (paramCocktails: any) => {
+            return paramCocktails as Cocktail[];
+        };
 
-
+        return obs1.pipe(map(treatment) );
+    }
 }
